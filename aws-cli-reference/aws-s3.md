@@ -3,6 +3,10 @@
 ```
 aws s3 ls
 ```
+- delete bucket in case of no versioning enable
+```
+aws s3 rm s3://your-bucket-name --recursive
+```
 
 - API Level
   - create backup for home region(us-east-1)
@@ -23,6 +27,30 @@ aws s3api create-bucket \
 aws s3api put-bucket-versioning \
   --bucket my-terraform-state-bucket \
   --versioning-configuration Status=Enabled
+```
+### Deleteing s3 bucket
+- In case of versioning is enabled, we must delete all versions and delete markers:
+```
+aws s3api delete-objects \
+  --bucket your-bucket-name \
+  --delete "$(aws s3api list-object-versions \
+    --bucket your-bucket-name \
+    --output=json \
+    --query='{Objects: Versions[].{Key:Key,VersionId:VersionId}}')"
+```
+```
+aws s3api delete-objects \
+  --bucket your-bucket-name \
+  --delete "$(aws s3api list-object-versions \
+    --bucket your-bucket-name \
+    --output=json \
+    --query='{Objects: DeleteMarkers[].{Key:Key,VersionId:VersionId}}')"
+```
+- Delete the bucket
+```
+aws s3api delete-bucket \
+  --bucket your-bucket-name \
+  --region ap-southeast-1  
 ```
 
 
