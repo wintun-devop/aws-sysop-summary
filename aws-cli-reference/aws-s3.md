@@ -5,21 +5,20 @@ aws s3 ls
 ```
 
 - API Level
-	- create backup for home region(us-east-1)
+  - create backup for home region(us-east-1)
 ```
 aws s3api create-bucket \
   --bucket your_backup_name \
   --region us-east-1
 ```
-	- create backup for out of home region
+ - create backup for out of home region
 ```
 aws s3api create-bucket \
   --bucket yoour_backup_name \
   --region ap-southeast-1 \
   --create-bucket-configuration LocationConstraint=ap-southeast-1
-
 ```
-	- version enable
+ - version enable
 ```
 aws s3api put-bucket-versioning \
   --bucket my-terraform-state-bucket \
