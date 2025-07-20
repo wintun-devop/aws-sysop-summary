@@ -3,7 +3,7 @@
 ```
 aws s3 ls
 ```
-- delete bucket in case of no versioning enable
+- delete objects in bucket in case of no versioning enable
 ```
 aws s3 rm s3://your-bucket-name --recursive
 ```
