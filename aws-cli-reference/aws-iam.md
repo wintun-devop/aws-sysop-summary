@@ -30,6 +30,12 @@ aws iam create-policy \
         ]
     }'
 ```
+- attached policy
+```
+aws iam attach-user-policy 
+--policy-arn arn:aws:iam::YOUR_ACCOUNT_ID:policy/DynamoDBManagementPolicy 
+--user-name YOUR_IAM_USERNAME
+```
 
 ### External Reference 
  - https://dynobase.dev/dynamodb-cli-query-examples/
