@@ -39,4 +39,5 @@ aws iam attach-user-policy
 
 ### External Reference 
  - https://dynobase.dev/dynamodb-cli-query-examples/
+ - https://www.geeksforgeeks.org/devops/dynamodb-aws-cli-commands/
    
